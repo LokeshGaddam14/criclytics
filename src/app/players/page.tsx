@@ -247,7 +247,8 @@ function PlayerDetailPanel({ player, onClose }: { player: Player; onClose: () =>
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.03)" />
             <XAxis dataKey="match" tick={{ fill: "#475569", fontSize: 11 }} tickLine={false} axisLine={false} />
             <YAxis tick={{ fill: "#475569", fontSize: 11 }} tickLine={false} axisLine={false} />
-            <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.8rem" }} formatter={(v: number) => [`${v} pts`, "Fantasy Pts"]} />
+            <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.8rem" }} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            formatter={((value: number | string | undefined) => [String(value ?? "") + " pts", "Fantasy Pts"]) as any} />
             <Area type="monotone" dataKey="points" stroke="#E8192C" strokeWidth={2.5} fill="url(#ptGrad)" dot={{ fill: "#E8192C", r: 4, strokeWidth: 0 }} activeDot={{ r: 6, fill: "#F5A623", strokeWidth: 0 }} />
           </AreaChart>
         </ResponsiveContainer>

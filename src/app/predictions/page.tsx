@@ -74,7 +74,8 @@ export default function PredictionsPage() {
                     <Cell fill="#E8192C" />
                     <Cell fill="#F5A623" />
                   </Pie>
-                  <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.78rem" }} formatter={(v: number) => [`${v}%`, "Win Probability"]} />
+                  <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.78rem" }} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  formatter={((value: number | string | undefined) => [String(value ?? "") + "%", "Win Probability"]) as any} />
                 </PieChart>
               </ResponsiveContainer>
             </div>

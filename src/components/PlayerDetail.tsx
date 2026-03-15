@@ -209,7 +209,8 @@ export default function PlayerDetail({ player, onClose }: Props) {
                   color: "var(--text-primary)",
                   fontSize: "0.8rem",
                 }}
-                formatter={(value: number) => [`${value} pts`, "Fantasy Points"]}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                formatter={((value: number | string | undefined) => [String(value ?? "") + " pts", "Fantasy Points"]) as any}
               />
               <Area
                 type="monotone"

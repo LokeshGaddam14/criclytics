@@ -203,7 +203,8 @@ export default function Dream11Page() {
                   <CartesianGrid horizontal={false} strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                   <XAxis type="number" tick={{ fill: "#475569", fontSize: 10 }} tickLine={false} axisLine={false} />
                   <YAxis dataKey="name" type="category" tick={{ fill: "#94a3b8", fontSize: 10 }} tickLine={false} axisLine={false} width={60} />
-                  <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.78rem" }} formatter={(v: number) => [`${v} pts/cr`, "Value"]} />
+                  <Tooltip contentStyle={{ background: "var(--bg-card)", border: "1px solid var(--border)", borderRadius: "8px", color: "#fff", fontSize: "0.78rem" }} // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  formatter={((value: number | string | undefined) => [String(value ?? "") + " pts/cr", "Value"]) as any} />
                   <Bar dataKey="ppc" radius={[0, 4, 4, 0]}>
                     {chartData.map((_, i) => (
                       <Cell key={i} fill={i < 3 ? "#E8192C" : i < 6 ? "#F5A623" : "#4A90E2"} />
